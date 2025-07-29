@@ -41,22 +41,22 @@ This repository contains the Aalto University “Introduction to AI and Machine 
     ```
 
 ## Project Structure
-aalto-intro-ai-ml/
-├── data/ # Sample datasets (CSV, images, etc.)
-│ ├── raw/ # Unprocessed data
-│ └── processed/ # Cleaned and transformed data
-├── notebooks/ # Jupyter notebooks for exploration and tutorials
-│ ├── 01_data_preprocessing.ipynb
-│ └── 02_model_training.ipynb
-├── src/ # Core source code
-│ ├── data/ # Data loading and preprocessing modules
-│ ├── models/ # Model definitions (e.g., neural nets, SVM)
-│ ├── utils/ # Utility functions (metrics, visualization)
-│ └── main.py # Entry point for training and evaluation
-├── configs/ # Configuration files (YAML) for training and evaluation
-├── requirements.txt # Project dependencies
-├── README.md # Project overview and instructions
-└── .gitignore # Files and directories to ignore in git
+aalto-intro-ai-ml/<br>
+├── data/ # Sample datasets (CSV, images, etc.)<br>
+│ ├── raw/ # Unprocessed data<br>
+│ └── processed/ # Cleaned and transformed data<br>
+├── notebooks/ # Jupyter notebooks for exploration and tutorials<br>
+│ ├── 01_data_preprocessing.ipynb<br>
+│ └── 02_model_training.ipynb<br>
+├── src/ # Core source code<br>
+│ ├── data/ # Data loading and preprocessing modules<br>
+│ ├── models/ # Model definitions (e.g., neural nets, SVM)<br>
+│ ├── utils/ # Utility functions (metrics, visualization)<br>
+│ └── main.py # Entry point for training and evaluation<br>
+├── configs/ # Configuration files (YAML) for training and evaluation<br>
+├── requirements.txt # Project dependencies<br>
+├── README.md # Project overview and instructions<br>
+└── .gitignore # Files and directories to ignore in git<br>
 
 ## Usage
 1. **Prepare data** (if adding new datasets):
