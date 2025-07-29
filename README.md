@@ -1,5 +1,10 @@
 # Aalto Intro to AI and ML Project
 
+## TODOS
+- [FEATURE]: make UI pretty
+- [FEATURE]: make documents removable
+- [FEATURE]: **implement insurance specific prompting**
+
 ## Overview
 This repository contains the Aalto University “Introduction to AI and Machine Learning” course project. It provides implementations of core AI/ML algorithms, sample datasets, and utilities to experiment with models and visualize results.
 

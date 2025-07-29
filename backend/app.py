@@ -82,7 +82,10 @@ def upload():
 
     #Build RetrievalQA chain
     retriever = vector_store.as_retriever(search_kwargs={"k": 4})
-    llm = ChatOpenAI(temperature=0)
+    llm = ChatOpenAI(
+        model_name="gpt-4.1-nano",
+        temperature=0
+    )
     qa_chain = RetrievalQA.from_chain_type(
         llm=llm,
         chain_type="stuff",
