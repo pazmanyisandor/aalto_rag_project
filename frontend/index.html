@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>RAG Q&A</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <h1>Document Q&A (RAG)</h1>
+
+  <!-- Upload form -->
+  <section>
+    <h2>1. Upload a document</h2>
+    <form id="upload-form">
+      <input type="file" id="file-input" accept=".pdf,.docx,.txt" required />
+      <button type="submit">Upload & Index</button>
+    </form>
+    <p id="upload-status"></p>
+  </section>
+
+  <hr/>
+
+  <!-- Ask form -->
+  <section>
+    <h2>2. Ask a question</h2>
+    <form id="ask-form">
+      <input
+        type="text"
+        id="question-input"
+        placeholder="Enter your question..."
+        size="50"
+        required
+      />
+      <button type="submit">Ask</button>
+    </form>
+    <div id="answer-container">
+      <h3>Answer:</h3>
+      <p id="answer-text"></p>
+    </div>
+  </section>
+</body>
+</html>
