@@ -7,9 +7,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const askForm = document.getElementById("ask-form");
   const questionInput = document.getElementById("question-input");
-  const answerText = document.getElementById("answer-text");
+  const chatWindow = document.getElementById("chat-window");
 
-  //Upload & index
+  // Helper to append a chat bubble
+  function appendMessage(sender, text) {
+    const wrapper = document.createElement("div");
+    wrapper.classList.add(
+      "d-flex",
+      "mb-2",
+      sender === "user" ? "justify-content-end" : "justify-content-start"
+    );
+
+    const bubble = document.createElement("div");
+    bubble.classList.add("p-2", "rounded");
+    if (sender === "user") {
+      bubble.classList.add("bg-primary", "text-white");
+    } else {
+      bubble.classList.add("bg-light");
+    }
+    bubble.textContent = text;
+
+    wrapper.appendChild(bubble);
+    chatWindow.appendChild(wrapper);
+    chatWindow.scrollTop = chatWindow.scrollHeight;
+  }
+
+  // Upload & index
   uploadForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     if (!fileInput.files.length) return;
@@ -27,17 +50,20 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!res.ok) throw new Error(data.error || "Upload failed");
       uploadStatus.textContent = data.message;
     } catch (err) {
-      uploadStatus.textContent = `${err.message}`;
+      uploadStatus.textContent = `Error: ${err.message}`;
     }
   });
 
-  //Ask the LLM
+  // Ask the LLM
   askForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     const q = questionInput.value.trim();
     if (!q) return;
 
-    answerText.textContent = "Thinking…";
+    appendMessage("user", q);
+    appendMessage("bot", "Thinking…");
+    questionInput.value = "";
+
     try {
       const res = await fetch(`${BASE_URL}/ask`, {
         method: "POST",
@@ -46,9 +72,16 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "LLM error");
-      answerText.textContent = data.answer;
+
+      const botBubbles = chatWindow.querySelectorAll(
+        "div > div.bg-light"
+      );
+      botBubbles[botBubbles.length - 1].textContent = data.answer;
     } catch (err) {
-      answerText.textContent = `${err.message}`;
+      const botBubbles = chatWindow.querySelectorAll(
+        "div > div.bg-light"
+      );
+      botBubbles[botBubbles.length - 1].textContent = `Error: ${err.message}`;
     }
   });
 });
