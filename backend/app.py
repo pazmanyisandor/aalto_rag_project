@@ -94,7 +94,11 @@ def upload():
 
     return jsonify({"message": f"Indexed {filename}: {len(docs)} chunks."})
 
-#Returns the LLM’s answer based on the indexed documents
+# Load system prompt once at startup
+with open("pre_prompt_commands_example.txt", "r", encoding="utf-8") as f:
+    system_prompt = f.read().strip()
+
+# Returns the LLM’s answer based on the indexed documents
 @app.route("/ask", methods=["POST"])
 def ask():
     if qa_chain is None:
@@ -105,7 +109,10 @@ def ask():
     if not question:
         return jsonify({"error": "Empty question."}), 400
 
-    answer = qa_chain.run(question)
+    # Prepend system prompt to the user question
+    full_prompt = f"{system_prompt}\n\nQuestion: {question}"
+
+    answer = qa_chain.run(full_prompt)
     return jsonify({"answer": answer})
 
 
