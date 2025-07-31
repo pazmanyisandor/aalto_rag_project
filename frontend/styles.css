@@ -18,3 +18,7 @@ section {
   padding: 1rem;
   border-radius: 4px;
 }
+
+.bg-light {
+  white-space: pre-wrap;
+}

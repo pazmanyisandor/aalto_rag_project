@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const botBubbles = chatWindow.querySelectorAll(
         "div > div.bg-light"
       );
-      botBubbles[botBubbles.length - 1].textContent = data.answer;
+      botBubbles[botBubbles.length - 1].innerHTML = data.answer.replace(/\n/g, "<br>");
     } catch (err) {
       const botBubbles = chatWindow.querySelectorAll(
         "div > div.bg-light"
